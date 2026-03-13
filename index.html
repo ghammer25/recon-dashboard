@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recon HC — Report 12/03/2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --dark: #1a1a2e;
+    --spx-blue: #213d87;
+    --blue-light: #d9e8f7;
+    --green: #8fc47d;
+    --yellow: #ffd966;
+    --red: #e84d3c;
+    --gray-light: #f2f2f2;
+    --gray-mid: #d9d9d9;
+    --gray-text: #666;
+    --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f6fa;
+    color: #2d2d2d;
+    line-height: 1.5;
+    padding: 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--spx-blue) 100%);
+    color: var(--white);
+    padding: 30px 40px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header .sub { font-size: 13px; opacity: 0.85; }
+  .header .date { float: right; font-size: 12px; opacity: 0.7; margin-top: -30px; }
+
+  .kpi-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    background: var(--white);
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+  }
+  .kpi-card {
+    padding: 18px 20px;
+    border-bottom: 3px solid transparent;
+    border-right: 1px solid #eee;
+    text-align: center;
+  }
+  .kpi-card:last-child { border-right: none; }
+  .kpi-card .value { font-size: 28px; font-weight: 700; }
+  .kpi-card .label { font-size: 11px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .kpi-card.critical { border-bottom-color: var(--red); }
+  .kpi-card.critical .value { color: var(--red); }
+  .kpi-card.warning { border-bottom-color: var(--yellow); }
+  .kpi-card.warning .value { color: #c78c00; }
+  .kpi-card.ok { border-bottom-color: var(--green); }
+  .kpi-card.ok .value { color: #2e7d32; }
+  .kpi-card.neutral .value { color: var(--spx-blue); }
+
+  .content {
+    background: var(--white);
+    padding: 30px 40px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 24px;
+  }
+
+  .section { margin-bottom: 32px; }
+  .section-num { display: inline-block; background: var(--spx-blue); color: var(--white); width: 28px; height: 28px;
+    text-align: center; line-height: 28px; border-radius: 50%; font-size: 14px; font-weight: 700; margin-right: 10px; }
+  .section-title { font-size: 16px; font-weight: 700; color: var(--dark); display: inline; }
+
+  .insight-box {
+    background: var(--blue-light);
+    border-left: 4px solid var(--spx-blue);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+  }
+  .insight-box strong { color: var(--spx-blue); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  th {
+    background: var(--spx-blue);
+    color: var(--white);
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  th.group-header {
+    background: var(--dark);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+  td:first-child { text-align: left; font-weight: 500; }
+  tr.section-row { background: var(--gray-light); }
+  tr.section-row td { font-weight: 700; }
+  tr.separator td { height: 8px; border: none; background: var(--white); }
+  tr:hover { background: #fafbff; }
+  tr.total-row { background: var(--gray-mid); font-weight: 700; }
+  tr.total-row td { font-weight: 700; }
+
+  .wow-up { color: var(--red); font-weight: 600; }
+  .wow-down { color: #2e7d32; font-weight: 600; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+    font-size: 12px;
+    color: var(--gray-text);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  .chart-container {
+    position: relative;
+    height: 280px;
+    margin: 20px 0;
+    padding: 10px;
+    background: var(--gray-light);
+    border-radius: 8px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .badge.critical { background: #fde2e0; color: var(--red); }
+  .badge.warning { background: #fff8e1; color: #c78c00; }
+  .badge.ok { background: #e8f5e9; color: #2e7d32; }
+  .badge.info { background: var(--blue-light); color: var(--spx-blue); }
+  .badge.pendente { background: #fff3e0; color: #e65100; }
+
+  .detail-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .detail-card .card-header {
+    background: var(--gray-light);
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .detail-card .card-body {
+    padding: 16px 20px;
+  }
+  .detail-card .base-row {
+    display: flex;
+    gap: 12px;
+    margin: 8px 0;
+    align-items: baseline;
+  }
+  .detail-card .base-name {
+    background: var(--blue-light);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    min-width: 130px;
+    text-align: center;
+  }
+  .detail-card .base-val {
+    font-size: 13px;
+  }
+  .action-line {
+    font-size: 12px;
+    color: var(--gray-text);
+    font-style: italic;
+    margin-left: 142px;
+    margin-top: 2px;
+  }
+
+  .pareto-bar {
+    display: flex;
+    height: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 8px 0 16px;
+  }
+  .pareto-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--white);
+    min-width: 20px;
+    transition: flex-grow 0.3s;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+    .kpi-bar { grid-template-columns: repeat(2, 1fr); }
+    body { padding: 8px; }
+    .header, .content { padding: 20px; }
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-text);
+    padding: 16px;
+  }
+  .glossary { font-size: 12px; color: var(--gray-text); margin-top: 8px; }
+  .glossary dt { font-weight: 600; color: #444; display: inline; }
+  .glossary dd { display: inline; margin: 0 16px 0 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Reconciliacao de Bases de HC — SPX Express Brasil</h1>
+  <div class="sub">Projeto DEASA | Scope: Performance Hubs (FMH + HUB) | Auxiliar de Logistica</div>
+  <div class="date">Atualizado: 12/03/2026 21:29 BRT</div>
+</div>
+
+<!-- KPI BAR -->
+<div class="kpi-bar">
+  <div class="kpi-card warning">
+    <div class="value">12.7%</div>
+    <div class="label">Taxa Discrepancia</div>
+  </div>
+  <div class="kpi-card neutral">
+    <div class="value">18.092</div>
+    <div class="label">Total HCs</div>
+  </div>
+  <div class="kpi-card critical">
+    <div class="value">2.294</div>
+    <div class="label">Erros Encontrados</div>
+  </div>
+  <div class="kpi-card neutral">
+    <div class="value">8.094</div>
+    <div class="label">FTEs Ativos</div>
+  </div>
+  <div class="kpi-card neutral">
+    <div class="value">8.898</div>
+    <div class="label">BPOs Ativos</div>
+  </div>
+  <div class="kpi-card critical">
+    <div class="value">1.100</div>
+    <div class="label">Inativos</div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- SECTION 1: EVOLUCAO SEMANAL -->
+<div class="section">
+  <span class="section-num">1</span>
+  <span class="section-title">Evolucao semanal da reconciliacao</span>
+
+  <div class="insight-box">
+    <strong>Situacao atual:</strong> Taxa de discrepancia em <b>12.7%</b> — 2.294 erros em 18.092 HCs
+    (FTE: 8.094, BPO: 8.898).<br>
+    <strong>FMH:</strong> 589 erros (15.7%) em 3.744 HCs |
+    <strong>HUB:</strong> 1.705 erros (11.9%) em 14.348 HCs
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left; width:100px;">Operacao</th>
+        <th style="width:150px;">Status</th>
+        <th style="width:80px;">07/03/2026</th>
+        <th style="width:80px;">09/03/2026</th>
+        <th style="width:80px;">10/03/2026</th>
+        <th style="width:80px;">11/03/2026</th>
+        <th style="width:70px;">WoW</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section-row">
+        <td>Total</td>
+        <td>Location divergente</td>
+        <td>382</td>
+        <td>433</td>
+        <td>418</td>
+        <td>412</td>
+        <td class="wow-down">-1.4%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Nao contem nas bases</td>
+        <td>2.162</td>
+        <td>1.412</td>
+        <td>2.032</td>
+        <td>1.981</td>
+        <td class="wow-down">-2.5%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Inativos</td>
+        <td>3.348</td>
+        <td>3.426</td>
+        <td>3.423</td>
+        <td>4.442</td>
+        <td class="wow-up">+29.8%</td>
+      </tr>
+      <tr class="separator"><td colspan="99"></td></tr>
+      <tr class="section-row">
+        <td>FMH</td>
+        <td>Location divergente</td>
+        <td>4</td>
+        <td>12</td>
+        <td>4</td>
+        <td>4</td>
+        <td class="wow-up">+0.0%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Nao contem nas bases</td>
+        <td>245</td>
+        <td>253</td>
+        <td>299</td>
+        <td>242</td>
+        <td class="wow-down">-19.1%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Inativos</td>
+        <td>126</td>
+        <td>102</td>
+        <td>115</td>
+        <td>216</td>
+        <td class="wow-up">+87.8%</td>
+      </tr>
+      <tr class="separator"><td colspan="99"></td></tr>
+      <tr class="section-row">
+        <td>HUB</td>
+        <td>Location divergente</td>
+        <td>35</td>
+        <td>84</td>
+        <td>76</td>
+        <td>98</td>
+        <td class="wow-up">+28.9%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Nao contem nas bases</td>
+        <td>724</td>
+        <td>347</td>
+        <td>475</td>
+        <td>360</td>
+        <td class="wow-down">-24.2%</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Inativos</td>
+        <td>492</td>
+        <td>529</td>
+        <td>511</td>
+        <td>884</td>
+        <td class="wow-up">+73.0%</td>
+      </tr>
+      <tr class="separator"><td colspan="99"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CHART: EVOLUCAO -->
+<div class="section">
+  <div class="chart-container">
+    <canvas id="evoChart"></canvas>
+  </div>
+</div>
+
+<!-- SECTION 2: ALINHAMENTOS PENDENTES -->
+<div class="section">
+  <span class="section-num">2</span>
+  <span class="section-title">Alinhamentos pendentes desde Dez/25</span>
+  <table style="margin-top:12px;">
+    <thead>
+      <tr>
+        <th style="text-align:left;">Item</th>
+        <th style="width:160px;">PIC (Responsavel unico)</th>
+        <th style="width:100px;">Status</th>
+        <th style="width:90px;">ETA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Deadline para submissao de ajustes para serem refletidos no mesmo mes nas bases de RH (HRIS e Ponto)</td>
+        <td style="text-align:center;">Eduardo Urtado</td>
+        <td style="text-align:center;"><span class="badge pendente">Pendente</span></td>
+        <td style="text-align:center;">Definir</td>
+      </tr>
+      <tr>
+        <td>Frequencia ideal para subir ajustes de RH</td>
+        <td style="text-align:center;">Eduardo Urtado</td>
+        <td style="text-align:center;"><span class="badge pendente">Pendente</span></td>
+        <td style="text-align:center;">Definir</td>
+      </tr>
+      <tr>
+        <td>ETA para os ajustes refletirem nas bases de RH a partir da abertura dos tickets</td>
+        <td style="text-align:center;">Eduardo Urtado</td>
+        <td style="text-align:center;"><span class="badge pendente">Pendente</span></td>
+        <td style="text-align:center;">Definir</td>
+      </tr>
+      <tr>
+        <td>Ideacao da melhoria do processo de inclusao/ajuste de bases de RH para evitar erros futuros</td>
+        <td style="text-align:center;">Eduardo Urtado</td>
+        <td style="text-align:center;"><span class="badge info">Em discussao</span></td>
+        <td style="text-align:center;">Mar/26</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 3: DETALHAMENTO POR OPERACAO -->
+<div class="section">
+  <span class="section-num">3</span>
+  <span class="section-title">Detalhamento por operacao</span>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">a) HUBs
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 14.348 HCs | Erros: 1.705 (11.9%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HRIS</th>
+        <th class="group-header" colspan="2">Base de Ponto</th>
+        <th class="group-header" colspan="2">Presenteismo</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>314</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>1.094</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>300</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>89</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>82</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>521</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>367</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>187</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>884</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge critical">Total: 1.708</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>314</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>1.094</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>300</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 692</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>89</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>82</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>521</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge critical">Total: 1.438</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>367</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>187</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>884</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">b) FMHs
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 3.744 HCs | Erros: 589 (15.7%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HRIS</th>
+        <th class="group-header" colspan="2">Base de Ponto</th>
+        <th class="group-header" colspan="2">Presenteismo</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>191</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>1.167</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>58</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>13</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>315</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>89</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>4</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>216</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge critical">Total: 1.416</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>191</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>1.167</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>58</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 328</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>13</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>315</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge critical">Total: 309</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HRIS</span>
+        <span class="base-val"><b>89</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Base de Ponto</span>
+        <span class="base-val"><b>4</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Presenteismo</span>
+        <span class="base-val"><b>216</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: ANALISE PARETO -->
+<div class="section">
+  <span class="section-num">4</span>
+  <span class="section-title">Analise de Pareto (80/20)</span>
+  <div class="pareto-bar">
+    <div class="pareto-segment" style="flex-grow:47; background:#e84d3c;" title="Inativos: 1.100 (48.0%)">48%</div>
+    <div class="pareto-segment" style="flex-grow:36; background:#f39c12;" title="Nao contem na DB: 836 (36.4%)">36%</div>
+    <div class="pareto-segment" style="flex-grow:15; background:#3498db;" title="Sort Code Incorreto: 358 (15.6%)">16%</div>
+    <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 11 (0.5%)">0%</div>
+    <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+    <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
+  </div>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Inativos: 1.100</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Nao contem na DB: 836</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 358</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 11</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+    <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left;">Tipo de Erro</th>
+        <th>Quantidade</th>
+        <th>% Individual</th>
+        <th>% Acumulado</th>
+        <th>Dentro do 80%?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Inativos</td>
+        <td>1.100</td>
+        <td>48.0%</td>
+        <td>48.0%</td>
+        <td><span class="badge critical">SIM</span></td>
+      </tr>
+      <tr>
+        <td>Nao contem na DB</td>
+        <td>836</td>
+        <td>36.4%</td>
+        <td>84.4%</td>
+        <td><span class="badge ok">NAO</span></td>
+      </tr>
+      <tr>
+        <td>Sort Code Incorreto</td>
+        <td>358</td>
+        <td>15.6%</td>
+        <td>100.0%</td>
+        <td><span class="badge ok">NAO</span></td>
+      </tr>
+      <tr>
+        <td>Wrong Staff ID</td>
+        <td>11</td>
+        <td>0.5%</td>
+        <td>100.5%</td>
+        <td><span class="badge ok">NAO</span></td>
+      </tr>
+      <tr>
+        <td>Sem Staff ID</td>
+        <td>0</td>
+        <td>0.0%</td>
+        <td>100.5%</td>
+        <td><span class="badge ok">NAO</span></td>
+      </tr>
+      <tr>
+        <td>Internalizacao</td>
+        <td>0</td>
+        <td>0.0%</td>
+        <td>100.5%</td>
+        <td><span class="badge ok">NAO</span></td>
+      </tr>
+      <tr class="total-row">
+        <td>TOTAL</td>
+        <td>2.294</td>
+        <td>100%</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: DISCREPANCIA POR SITE TYPE -->
+<div class="section">
+  <span class="section-num">5</span>
+  <span class="section-title">Discrepancia por Site Type</span>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left;">Site Type</th>
+        <th>HCs HR</th>
+        <th>HCs Ponto</th>
+        <th>HCs Presenteismo</th>
+        <th>Total HCs</th>
+        <th>FTEs</th>
+        <th>BPOs</th>
+        <th>Erros</th>
+        <th>Taxa</th>
+        <th>Inativos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>FMH</b></td>
+        <td>3.706</td>
+        <td>1.277</td>
+        <td>3.528</td>
+        <td>3.744</td>
+        <td>1.204</td>
+        <td>2.324</td>
+        <td>589</td>
+        <td><span class="badge critical">15.7%</span></td>
+        <td>216</td>
+      </tr>
+      <tr>
+        <td><b>HUB</b></td>
+        <td>13.044</td>
+        <td>6.969</td>
+        <td>13.464</td>
+        <td>14.348</td>
+        <td>6.890</td>
+        <td>6.574</td>
+        <td>1.705</td>
+        <td><span class="badge warning">11.9%</span></td>
+        <td>884</td>
+      </tr>
+      <tr class="total-row">
+        <td>TOTAL</td>
+        <td>16.750</td>
+        <td>8.246</td>
+        <td>16.992</td>
+        <td>18.092</td>
+        <td>8.094</td>
+        <td>8.898</td>
+        <td>2.294</td>
+        <td><span class="badge warning">12.7%</span></td>
+        <td>1.100</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: IMPACTO FINANCEIRO -->
+<div class="section">
+  <span class="section-num">6</span>
+  <span class="section-title">Impacto Financeiro Estimado</span>
+  <div class="two-col" style="margin-top:16px;">
+    <div class="insight-box" style="background:#fde2e0; border-left-color:var(--red);">
+      <div style="font-size:24px; font-weight:700; color:var(--red);">R$ 8,029,000</div>
+      <div style="font-size:12px; color:#666; margin-top:4px;">Custo mensal estimado (BRL)</div>
+      <div style="font-size:11px; color:#999; margin-top:2px;">Base: R$3.500/HC/mes x 2.294 erros</div>
+    </div>
+    <div class="insight-box" style="background:#e8f5e9; border-left-color:var(--green);">
+      <div style="font-size:24px; font-weight:700; color:#2e7d32;">US$ 1,529,333</div>
+      <div style="font-size:12px; color:#666; margin-top:4px;">Custo mensal estimado (USD)</div>
+      <div style="font-size:11px; color:#999; margin-top:2px;">Cambio: R$5,25/USD</div>
+    </div>
+  </div>
+</div>
+
+<!-- GLOSSARIO -->
+<div class="section">
+  <span class="section-num">7</span>
+  <span class="section-title">Glossario</span>
+  <dl class="glossary" style="margin-top:12px;">
+    <dt>Location Divergente:</dt><dd>Localidade cadastrada nao alinhada entre as bases.</dd>
+    <dt>Nao contem nas bases:</dt><dd>HCs nao encontrados em outras bases.</dd>
+    <dt>Inativos:</dt><dd>HCs marcados como inativos mas ainda presentes em bases ativas.</dd>
+    <dt>HRIS:</dt><dd>Base de RH (dados cadastrais, contrato).</dd>
+    <dt>Base de Ponto:</dt><dd>Base de presenca/escalas (Attendance HR).</dd>
+    <dt>Presenteismo:</dt><dd>Base operacional de performance.</dd>
+    <dt>Total (nao MECE):</dt><dd>Total consolida divergencias unicas — um HC pode divergir em multiplas bases, entao Total ≠ HRIS + Ponto + Presenteismo.</dd>
+  </dl>
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+  Gerado automaticamente por build_local_dashboard.py | Dados: Ind. Summary v2 + Recon_before_after | 12/03/2026
+</div>
+
+</div><!-- /container -->
+
+<script>
+
+// Evolution Chart
+const ctx1 = document.getElementById('evoChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'line',
+  data: {
+    labels: ["07/03/2026", "09/03/2026", "10/03/2026", "11/03/2026"],
+    datasets: [
+      {
+        label: 'Nao contem na DB',
+        data: [2162, 1412, 2032, 1981],
+        borderColor: '#e84d3c',
+        backgroundColor: 'rgba(232,77,60,0.08)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        borderWidth: 2
+      },
+      {
+        label: 'Location divergente',
+        data: [382, 433, 418, 412],
+        borderColor: '#f39c12',
+        backgroundColor: 'rgba(243,156,18,0.08)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        borderWidth: 2
+      },
+      {
+        label: 'Inativos',
+        data: [3348, 3426, 3423, 4442],
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52,152,219,0.08)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 4,
+        borderWidth: 2
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: { display: true, text: 'Evolucao de Divergencias (Total)', font: { size: 14 } },
+      legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle' } }
+    },
+    scales: {
+      y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString('pt-BR') } }
+    }
+  }
+});
+</script>
+</body>
+</html>
