@@ -412,12 +412,159 @@
         <td>16%</td>
         <td><span class="badge progresso">EM INVESTIGAÇÃO</span></td>
       </tr>
+      <tr>
+        <td>3</td>
+        <td>Desligados no Jira que permanecem ativos nas bases HR/Performance</td>
+        <td>1.323 pessoas com ticket de desligamento processado ainda ativas (3,6% do total)</td>
+        <td>~36%</td>
+        <td><span class="badge critical">CONFIRMADA</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Casos PSC recorrentes — tickets abertos mas HCs permanecem em Performance</td>
+        <td>387 de 446 (87%) com status pendente/aberto continuam ativos em Performance</td>
+        <td>~12%</td>
+        <td><span class="badge critical">CONFIRMADA</span></td>
+      </tr>
     </tbody>
   </table>
 
   <div class="insight-box" style="margin-top:16px;">
     <strong>Solução proposta #1:</strong> Crosscheck automatizado (V2) + import pipeline já identifica os 836 HCs. Falta acionar correção nas bases.<br>
-    <strong>Solução proposta #2:</strong> Análise de movimentações (Moving/Not Moving) via Perf. Discrepancies tabs para os 358 sort codes divergentes.
+    <strong>Solução proposta #2:</strong> Análise de movimentações (Moving/Not Moving) via Perf. Discrepancies tabs para os 358 sort codes divergentes.<br>
+    <strong>Solução proposta #3:</strong> Priorizar desligamento efetivo nas bases HR/Performance dos 1.323 Staff IDs identificados no cruzamento Jira.<br>
+    <strong>Solução proposta #4:</strong> Regularizar os 387 casos PSC pendentes — garantir que tickets processados reflitam nas bases.
+  </div>
+
+  <!-- RECON x JIRA — DETALHAMENTO -->
+  <h4 style="margin:24px 0 12px; color:var(--spx-blue);">Recon x Jira (WF) — Cruzamento de Tickets</h4>
+  <div class="detail-card">
+    <div class="card-header">
+      <span>1.323 desligados que não saíram do sistema</span>
+      <span class="badge critical">3,6% do HC ativo</span>
+    </div>
+    <div class="card-body">
+      <p style="font-size:13px; margin-bottom:12px;">
+        Cruzados <b>8.635 tickets de desligamento</b> e <b>4.067 tickets de movimentação</b> do Jira (WF)
+        contra os <b>36.672 ativos</b> na CrossCheck.
+      </p>
+
+      <!-- KPIs do cruzamento -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;">
+        <div style="background:#fde2e0; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:var(--red);">1.323</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Ainda Ativos</div>
+        </div>
+        <div style="background:#e8f5e9; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:#2e7d32;">948</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Já Inativos (OK)</div>
+        </div>
+        <div style="background:var(--gray-light); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:var(--dark);">6.364</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Não estão no CC</div>
+        </div>
+        <div style="background:var(--blue-light); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:var(--spx-blue);">8.635</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Total Tickets</div>
+        </div>
+      </div>
+
+      <!-- Por tipo de operação -->
+      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Por Tipo de Operação</h4>
+      <table class="sub-table" style="width:100%;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Location Type</th>
+            <th style="width:60px;">Qtd</th>
+            <th style="width:60px;">%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>SOC</td><td><b>714</b></td><td>54%</td></tr>
+          <tr><td>HUB</td><td><b>415</b></td><td>31%</td></tr>
+          <tr><td>FMH</td><td><b>139</b></td><td>11%</td></tr>
+          <tr><td>Own Flex</td><td>22</td><td>1,7%</td></tr>
+          <tr><td>RTS/Almox/FBS/CB</td><td>28</td><td>2,1%</td></tr>
+          <tr class="total-row"><td>Total</td><td>1.323</td><td>100%</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Por consultoria -->
+      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Por Consultoria</h4>
+      <table class="sub-table" style="width:100%;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Consultoria</th>
+            <th style="width:60px;">Qtd</th>
+            <th style="width:60px;">%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Luandre</td><td><b>411</b></td><td>31%</td></tr>
+          <tr><td>GNX</td><td>221</td><td>17%</td></tr>
+          <tr><td>Gi Group</td><td>220</td><td>17%</td></tr>
+          <tr><td>Employer</td><td>191</td><td>14%</td></tr>
+          <tr><td>Adecco</td><td>148</td><td>11%</td></tr>
+          <tr><td>WeCan/Randstad/Manpower/Avanti</td><td>132</td><td>10%</td></tr>
+          <tr class="total-row"><td>Total</td><td>1.323</td><td>100%</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Movimentação -->
+      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Tickets de Movimentação</h4>
+      <div style="font-size:13px;">
+        <p><b>1.924</b> dos 4.067 (47%) estão na CrossCheck:</p>
+        <ul style="margin:8px 0 0 20px; font-size:12px;">
+          <li><b>24</b> com Sort Code incorreto (hub origem vs destino diferente no CC)</li>
+          <li><b>276</b> com "Not in all DBs"</li>
+          <li><b>430</b> pessoas têm ticket de movimentação E desligamento (overlap), <b>118</b> ainda ativas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box" style="background:#fde2e0; border-left-color:var(--red);">
+    <strong style="color:var(--red);">Conclusão Recon x Jira:</strong>
+    1.323 pessoas com ticket de desligamento no Jira continuam ativas nas bases HR e Performance.
+    O gap principal é entre Ahgora (que já removeu) e HR/Performance (que não atualizaram).
+    Isso infla o headcount ativo em ~3,6% e causa discrepâncias sistêmicas no Ind. Summary.<br>
+    <b>SOC (54%)</b> é a operação mais afetada, <b>Luandre (31%)</b> a consultoria com mais pendências.<br>
+    <strong>Recomendação:</strong> priorizar o desligamento efetivo nas bases HR/Performance desses 1.323 Staff IDs para corrigir os deltas.
+  </div>
+
+  <!-- RECON PSC — INSIGHT -->
+  <h4 style="margin:24px 0 12px; color:var(--spx-blue);">Recon x PSC — Casos de Discrepância</h4>
+  <div class="detail-card">
+    <div class="card-header">
+      <span>446 casos PSC — 100% presentes e ativos na CrossCheck</span>
+      <span class="badge warning">87% pendentes</span>
+    </div>
+    <div class="card-body">
+      <!-- KPIs PSC -->
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;">
+        <div style="background:var(--blue-light); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:var(--spx-blue);">446</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Total PSC</div>
+        </div>
+        <div style="background:#fff3e0; border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:22px; font-weight:700; color:#e65100;">387</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Pendentes (87%)</div>
+        </div>
+        <div style="background:var(--gray-light); border-radius:8px; padding:12px; text-align:center;">
+          <div style="font-size:13px; font-weight:700; color:var(--dark);">256 BPO + 190 FTE</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Composição</div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;">
+        <b>100%</b> (446/446) das pessoas da PSC estão na CrossCheck e <b>TODAS estão ATIVAS</b>.
+        Isso é esperado, já que a PSC lista casos ativos de discrepância.
+      </p>
+      <p style="font-size:13px; margin-top:8px;">
+        <b>O dado crítico:</b> 387 pessoas (87%) têm status pendente/aberto (ticket PSC) e TODAS estão
+        in Performance — são casos recorrentes que aparecem no Performance mesmo com tickets abertos.
+      </p>
+    </div>
   </div>
 </div>
 
