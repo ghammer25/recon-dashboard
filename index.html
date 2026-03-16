@@ -414,16 +414,16 @@
       </tr>
       <tr>
         <td>3</td>
-        <td>Desligados no Jira que permanecem ativos nas bases HR/Performance</td>
-        <td>1.323 com ticket de desligamento ainda ativos — <b>84,5% com &lt;30 dias (timing)</b>, 15,5% &gt;30 dias (provável erro)</td>
-        <td>~36%</td>
+        <td>Desligados no Jira (BPO) que permanecem ativos nas bases HR</td>
+        <td>1.145 com ticket de desligamento ainda ativos — <b>83,4% com &lt;30 dias (timing)</b>, 16,6% &gt;30 dias (provável erro). 99,8% BPO (24 SPX* de 15K tickets).</td>
+        <td>~3,2%</td>
         <td><span class="badge progresso">DETALHADA</span></td>
       </tr>
       <tr>
         <td>4</td>
-        <td>Casos PSC recorrentes — tickets abertos mas HCs permanecem em Performance</td>
-        <td>277 de 446 (62%) com status pendente; 110 concluídos, 59 sem status</td>
-        <td>~8%</td>
+        <td>Casos de discrepância — PSC (FTE) + Jira (BPO)</td>
+        <td><b>PSC (FTE)</b>: 190 (80 pend., 110 conc.) | <b>Jira (BPO)</b>: 256 (197 pend., 59 s/ status). Todos 446 ativos na CC.</td>
+        <td>~1,3%</td>
         <td><span class="badge progresso">CORRIGIDA</span></td>
       </tr>
     </tbody>
@@ -432,55 +432,62 @@
   <div class="insight-box" style="margin-top:16px;">
     <strong>Solução proposta #1:</strong> Crosscheck automatizado (V2) + import pipeline já identifica os 836 HCs. Falta acionar correção nas bases.<br>
     <strong>Solução proposta #2:</strong> Análise de movimentações (Moving/Not Moving) via Perf. Discrepancies tabs para os 358 sort codes divergentes.<br>
-    <strong>Solução proposta #3:</strong> Dos 1.323 desligamentos ativos, 205 (15,5%) têm tickets &gt;30 dias — priorizar estes. Os 1.118 restantes (&lt;30 dias) são timing esperado entre abertura e efetivação.<br>
-    <strong>Solução proposta #4:</strong> Regularizar os 277 casos PSC pendentes (corrigido de 387 — 110 já concluídos estavam contabilizados indevidamente).
+    <strong>Solução proposta #3:</strong> Dos 1.145 desligamentos ativos, 190 (16,6%) têm tickets &gt;30 dias — priorizar estes. Os 955 restantes (&lt;30 dias) são timing esperado. Verificação: 99,8% BPO (apenas 24 SPX* de 15K tickets). Movimentações: 99,9% já refletidas no CC (1.627 de 1.629).<br>
+    <strong>Solução proposta #4:</strong> PSC (FTE): 80 pendentes de 190 (110 concluídos). Jira (BPO): 197 pendentes de 256 (59 sem status). Total: 277 pendentes de 446.
   </div>
 
   <!-- RECON x JIRA — DETALHAMENTO COM AGING -->
   <h4 style="margin:24px 0 12px; color:var(--spx-blue);">Tickets Abertos (Jira WF) — Análise de Aging</h4>
   <div class="detail-card">
     <div class="card-header">
-      <span>1.323 desligados ainda ativos — com classificação por idade do ticket</span>
-      <span class="badge warning">84,5% timing | 15,5% erro</span>
+      <span>1.145 desligados ainda ativos — com classificação por idade do ticket</span>
+      <span class="badge warning">83,4% timing | 16,6% erro</span>
     </div>
     <div class="card-body">
       <p style="font-size:13px; margin-bottom:12px;">
-        Cruzados <b>10.057 tickets de desligamento</b> e <b>4.921 tickets de movimentação</b> do Jira (WF)
-        contra os <b>37.075 ativos</b> na CrossCheck. Aging calculado a partir da data de <b>Criado</b> de cada ticket.
+        Cruzados <b>10.014 tickets de desligamento</b> e <b>4.921 tickets de movimentação</b> do Jira (WF)
+        contra os <b>35.538 ativos</b> na CrossCheck. Aging calculado a partir da data de <b>Criado</b> de cada ticket.
       </p>
+
+      <!-- Verificação SPX -->
+      <div class="insight-box" style="background:#e8f5e9; border-left-color:#2e7d32; margin-bottom:12px; padding:8px 12px;">
+        <strong style="color:#2e7d32;">Verificação Staff IDs:</strong>
+        Confirmado <b>99,8% BPO</b> — apenas 24 Staff IDs SPX* (FTE) encontrados de 14.935 tickets (6 desl. + 18 mov.).
+        O Jira WF é essencialmente BPO.
+      </div>
 
       <!-- KPIs do cruzamento -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;">
         <div style="background:#fde2e0; border-radius:8px; padding:12px; text-align:center;">
-          <div style="font-size:22px; font-weight:700; color:var(--red);">1.323</div>
+          <div style="font-size:22px; font-weight:700; color:var(--red);">1.145</div>
           <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Ainda Ativos</div>
         </div>
         <div style="background:#e8f5e9; border-radius:8px; padding:12px; text-align:center;">
-          <div style="font-size:22px; font-weight:700; color:#2e7d32;">948</div>
+          <div style="font-size:22px; font-weight:700; color:#2e7d32;">31</div>
           <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Já Inativos (OK)</div>
         </div>
         <div style="background:var(--gray-light); border-radius:8px; padding:12px; text-align:center;">
-          <div style="font-size:22px; font-weight:700; color:var(--dark);">6.364</div>
+          <div style="font-size:22px; font-weight:700; color:var(--dark);">7.421</div>
           <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Não estão no CC</div>
         </div>
         <div style="background:var(--blue-light); border-radius:8px; padding:12px; text-align:center;">
-          <div style="font-size:22px; font-weight:700; color:var(--spx-blue);">8.635</div>
+          <div style="font-size:22px; font-weight:700; color:var(--spx-blue);">8.597</div>
           <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">SIDs Únicos Desl.</div>
         </div>
       </div>
 
-      <!-- AGING BREAKDOWN — responde à liderança -->
-      <h4 style="font-size:13px; margin:20px 0 8px; color:var(--dark);">Aging dos 1.323 Desligamentos Ativos</h4>
+      <!-- AGING BREAKDOWN -->
+      <h4 style="font-size:13px; margin:20px 0 8px; color:var(--dark);">Aging dos 1.145 Desligamentos Ativos</h4>
       <p style="font-size:12px; color:var(--gray-text); margin-bottom:8px;">
         Classificação pela data de abertura do ticket (coluna "Criado") — responde: "o que é timing vs erro real?"
       </p>
 
       <!-- Aging visual bar -->
       <div style="display:flex; height:32px; border-radius:6px; overflow:hidden; margin:8px 0 12px;">
-        <div style="flex-grow:408; background:#4caf50; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="0-7 dias: 408">30,8%</div>
-        <div style="flex-grow:710; background:#ffc107; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#333;" title="8-30 dias: 710">53,7%</div>
-        <div style="flex-grow:154; background:#ff9800; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="31-90 dias: 154">11,6%</div>
-        <div style="flex-grow:51; background:#e84d3c; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="90+ dias: 51">3,9%</div>
+        <div style="flex-grow:348; background:#4caf50; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="0-7 dias: 348">30,4%</div>
+        <div style="flex-grow:607; background:#ffc107; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#333;" title="8-30 dias: 607">53,0%</div>
+        <div style="flex-grow:142; background:#ff9800; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="31-90 dias: 142">12,4%</div>
+        <div style="flex-grow:48; background:#e84d3c; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:#fff;" title="90+ dias: 48">4,2%</div>
       </div>
 
       <table class="sub-table" style="width:100%;">
@@ -494,106 +501,110 @@
         </thead>
         <tbody>
           <tr style="background:#e8f5e9;">
-            <td>0–7 dias</td><td><b>408</b></td><td>30,8%</td>
+            <td>0–7 dias</td><td><b>348</b></td><td>30,4%</td>
             <td style="font-size:11px;">Timing esperado — lag normal entre abertura e efetivação</td>
           </tr>
           <tr style="background:#fff8e1;">
-            <td>8–30 dias</td><td><b>710</b></td><td>53,7%</td>
+            <td>8–30 dias</td><td><b>607</b></td><td>53,0%</td>
             <td style="font-size:11px;">Revisar — pode ser timing ou atraso na efetivação</td>
           </tr>
           <tr style="background:#fff3e0;">
-            <td>31–90 dias</td><td><b>154</b></td><td>11,6%</td>
+            <td>31–90 dias</td><td><b>142</b></td><td>12,4%</td>
             <td style="font-size:11px; color:#e65100;">Provável erro — ticket antigo sem efetivação</td>
           </tr>
           <tr style="background:#fde2e0;">
-            <td>90+ dias</td><td><b>51</b></td><td>3,9%</td>
+            <td>90+ dias</td><td><b>48</b></td><td>4,2%</td>
             <td style="font-size:11px; color:var(--red);">Histórico — necessita ação corretiva urgente</td>
           </tr>
-          <tr class="total-row"><td>Total</td><td>1.323</td><td>100%</td><td></td></tr>
+          <tr class="total-row"><td>Total</td><td>1.145</td><td>100%</td><td></td></tr>
         </tbody>
       </table>
 
       <div class="insight-box" style="margin:16px 0; background:#e8f5e9; border-left-color:#2e7d32;">
         <strong style="color:#2e7d32;">Leitura-chave:</strong>
-        <b>84,5%</b> dos desligamentos ativos (1.118 de 1.323) têm tickets com &lt;30 dias — <b>timing esperado</b> entre abertura e efetivação.
-        Apenas <b>205 (15,5%)</b> ultrapassam 30 dias e representam prováveis erros que necessitam ação corretiva.
-        Destes, <b>51 tickets (&gt;90 dias)</b> são os mais críticos.
+        <b>83,4%</b> dos desligamentos ativos (955 de 1.145) têm tickets com &lt;30 dias — <b>timing esperado</b> entre abertura e efetivação.
+        Apenas <b>190 (16,6%)</b> ultrapassam 30 dias e representam prováveis erros que necessitam ação corretiva.
+        Destes, <b>48 tickets (&gt;90 dias)</b> são os mais críticos.
       </div>
 
-      <!-- Por tipo de operação -->
-      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Por Tipo de Operação (dos 1.323 ativos)</h4>
+      <!-- Presença nas bases -->
+      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Presença nas Bases (dos 1.145 ativos)</h4>
       <table class="sub-table" style="width:100%;">
         <thead>
           <tr>
-            <th style="text-align:left;">Location Type</th>
+            <th style="text-align:left;">Base</th>
             <th style="width:60px;">Qtd</th>
             <th style="width:60px;">%</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>SOC</td><td><b>714</b></td><td>54%</td></tr>
-          <tr><td>HUB</td><td><b>415</b></td><td>31%</td></tr>
-          <tr><td>FMH</td><td><b>139</b></td><td>11%</td></tr>
-          <tr><td>Own Flex</td><td>22</td><td>1,7%</td></tr>
-          <tr><td>RTS/Almox/FBS/CB</td><td>28</td><td>2,1%</td></tr>
-          <tr class="total-row"><td>Total</td><td>1.323</td><td>100%</td></tr>
+          <tr><td>In HR</td><td><b>1.145</b></td><td>100%</td></tr>
+          <tr><td>In Attendance HR</td><td>3</td><td>0,3%</td></tr>
+          <tr><td>In Performance</td><td>0</td><td>0%</td></tr>
+          <tr style="background:#e8f5e9;"><td colspan="3" style="font-size:11px; color:#2e7d32;"><b>Nota:</b> Desligamentos estão apenas no HR — já saíram de Attendance e Performance.</td></tr>
         </tbody>
       </table>
 
-      <!-- Por consultoria -->
-      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Por Consultoria (dos 1.323 ativos)</h4>
-      <table class="sub-table" style="width:100%;">
-        <thead>
-          <tr>
-            <th style="text-align:left;">Consultoria</th>
-            <th style="width:60px;">Qtd</th>
-            <th style="width:60px;">%</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Luandre</td><td><b>411</b></td><td>31%</td></tr>
-          <tr><td>GNX</td><td>221</td><td>17%</td></tr>
-          <tr><td>Gi Group</td><td>220</td><td>17%</td></tr>
-          <tr><td>Employer</td><td>191</td><td>14%</td></tr>
-          <tr><td>Adecco</td><td>148</td><td>11%</td></tr>
-          <tr><td>WeCan/Randstad/Manpower/Avanti</td><td>132</td><td>10%</td></tr>
-          <tr class="total-row"><td>Total</td><td>1.323</td><td>100%</td></tr>
-        </tbody>
-      </table>
-
-      <!-- Movimentação -->
-      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Tickets de Movimentação</h4>
+      <!-- Movimentação — Hub Comparison -->
+      <h4 style="font-size:13px; margin:16px 0 8px; color:var(--dark);">Tickets de Movimentação — Comparação de Hubs</h4>
       <div style="font-size:13px;">
-        <p><b>1.924</b> dos 4.921 (39,1%) estão na CrossCheck:</p>
-        <ul style="margin:8px 0 0 20px; font-size:12px;">
-          <li><b>24</b> com Sort Code incorreto (hub origem vs destino diferente no CC)</li>
-          <li><b>276</b> com "Not in all DBs"</li>
-        </ul>
+        <p><b>1.629</b> dos 4.921 (33,1%) estão na CrossCheck.</p>
+      </div>
+      <table class="sub-table" style="width:100%; margin-top:8px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Hub Jira vs Hub CC</th>
+            <th style="width:60px;">Qtd</th>
+            <th style="width:60px;">%</th>
+            <th style="text-align:left;">Significado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#e8f5e9;">
+            <td>Refletida (Same Hub = TRUE)</td><td><b>1.627</b></td><td>99,9%</td>
+            <td style="font-size:11px;">Movimentação já refletida na CC — hub atualizado</td>
+          </tr>
+          <tr style="background:#fff3e0;">
+            <td>Pendente (hubs divergem)</td><td><b>1</b></td><td>0,1%</td>
+            <td style="font-size:11px;">Hub no Jira diferente do Hub SoT no CC</td>
+          </tr>
+          <tr style="background:#f5f5f5;">
+            <td>Indeterminado</td><td>1</td><td>0,1%</td>
+            <td style="font-size:11px;">Sem dados suficientes para comparar</td>
+          </tr>
+          <tr class="total-row"><td>Total</td><td>1.629</td><td>100%</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="insight-box" style="margin:12px 0; background:#e8f5e9; border-left-color:#2e7d32; padding:8px 12px;">
+        <strong style="color:#2e7d32;">Conclusão Movimentações:</strong>
+        <b>99,9%</b> das movimentações já estão refletidas no CrossCheck (hub destino = hub SoT). Apenas 1 caso pendente.
+        O fluxo de movimentação está funcionando corretamente.
       </div>
     </div>
   </div>
 
   <div class="insight-box" style="background:#fff8e1; border-left-color:#f39c12;">
     <strong style="color:#c78c00;">Conclusão Tickets Abertos (Jira):</strong>
-    Dos 1.323 desligamentos ativos, <b>84,5% (1.118)</b> são timing esperado (&lt;30 dias desde abertura do ticket).
-    Apenas <b>205 (15,5%)</b> ultrapassam 30 dias e necessitam ação — destes, <b>51 são históricos (&gt;90 dias)</b>.<br>
-    <b>SOC (54%)</b> é a operação mais afetada, <b>Luandre (31%)</b> a consultoria com mais casos.<br>
-    <strong>Recomendação:</strong> Priorizar os 205 tickets &gt;30 dias (especialmente os 51 &gt;90 dias). Os demais devem se resolver pelo fluxo normal.
+    Dos 1.145 desligamentos ativos, <b>83,4% (955)</b> são timing esperado (&lt;30 dias desde abertura do ticket).
+    Apenas <b>190 (16,6%)</b> ultrapassam 30 dias e necessitam ação — destes, <b>48 são históricos (&gt;90 dias)</b>.<br>
+    Verificação: <b>99,8% BPO</b> (24 SPX* de 15K). Presença: 100% em HR, 0% em Performance (já removidos das bases operacionais).<br>
+    Movimentações: <b>99,9% refletidas</b> no CC (1.627 de 1.629). Hub comparison confirma fluxo operando corretamente.<br>
+    <strong>Recomendação:</strong> Priorizar os 190 tickets &gt;30 dias (especialmente os 48 &gt;90 dias). Os demais devem se resolver pelo fluxo normal.
   </div>
 
-  <!-- RECON PSC — CORRIGIDO -->
-  <h4 style="margin:24px 0 12px; color:var(--spx-blue);">Recon x PSC — Casos de Discrepância (Corrigido)</h4>
+  <!-- RECON PSC — DIVIDIDO PSC (FTE) + JIRA (BPO) -->
+  <h4 style="margin:24px 0 12px; color:var(--spx-blue);">Recon x PSC — Casos de Discrepância (PSC vs Jira)</h4>
   <div class="detail-card">
     <div class="card-header">
-      <span>446 casos PSC — classificação corrigida por status do ticket</span>
-      <span class="badge progresso">277 pendentes (62%)</span>
+      <span>446 casos divididos: PSC (FTE) = 190 | Jira (BPO) = 256</span>
+      <span class="badge progresso">277 pendentes total</span>
     </div>
     <div class="card-body">
-      <!-- KPIs PSC corrigidos -->
+      <!-- KPIs gerais -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;">
         <div style="background:var(--blue-light); border-radius:8px; padding:12px; text-align:center;">
           <div style="font-size:22px; font-weight:700; color:var(--spx-blue);">446</div>
-          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Total PSC</div>
+          <div style="font-size:10px; color:var(--gray-text); text-transform:uppercase;">Total Geral</div>
         </div>
         <div style="background:#fff3e0; border-radius:8px; padding:12px; text-align:center;">
           <div style="font-size:22px; font-weight:700; color:#e65100;">277</div>
@@ -609,19 +620,105 @@
         </div>
       </div>
 
-      <div class="insight-box" style="background:#fff8e1; border-left-color:#f39c12; margin-bottom:12px;">
-        <strong style="color:#c78c00;">Correção aplicada:</strong> O número anterior (387 pendentes) incluía erroneamente
-        110 casos com status "PSC concluído". Após reclassificação: <b>277 pendentes</b>, 110 concluídos, 59 sem status.
+      <p style="font-size:13px; margin-bottom:12px;">
+        <b>100%</b> (446/446) estão na CrossCheck e <b>TODAS estão ATIVAS</b>.
+        Divididos em dois sistemas de tickets diferentes:
+      </p>
+
+      <!-- PSC (FTE) vs Jira (BPO) comparison table -->
+      <table class="sub-table" style="width:100%; margin-bottom:16px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Métrica</th>
+            <th style="width:100px; background:#1a237e; color:#fff;">PSC (FTE)</th>
+            <th style="width:100px; background:#e65100; color:#fff;">Jira (BPO)</th>
+            <th style="width:80px;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Registros</td>
+            <td style="text-align:center;"><b>190</b></td>
+            <td style="text-align:center;"><b>256</b></td>
+            <td style="text-align:center;">446</td>
+          </tr>
+          <tr>
+            <td>Na CrossCheck</td>
+            <td style="text-align:center;">188</td>
+            <td style="text-align:center;">238</td>
+            <td style="text-align:center;">426</td>
+          </tr>
+          <tr>
+            <td>Ativos na CC</td>
+            <td style="text-align:center;">188</td>
+            <td style="text-align:center;">238</td>
+            <td style="text-align:center;">426</td>
+          </tr>
+          <tr style="background:#fff3e0;">
+            <td><b>Pendentes</b></td>
+            <td style="text-align:center;"><b>80</b></td>
+            <td style="text-align:center;"><b>197</b></td>
+            <td style="text-align:center;"><b>277</b></td>
+          </tr>
+          <tr style="background:#e8f5e9;">
+            <td>Concluídos</td>
+            <td style="text-align:center;"><b>110</b></td>
+            <td style="text-align:center;">0</td>
+            <td style="text-align:center;">110</td>
+          </tr>
+          <tr>
+            <td>Sem status</td>
+            <td style="text-align:center;">0</td>
+            <td style="text-align:center;"><b>59</b></td>
+            <td style="text-align:center;">59</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PSC detail -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="border:1px solid #e0e0e0; border-radius:8px; padding:12px;">
+          <h4 style="font-size:13px; margin:0 0 8px; color:#1a237e;">PSC (FTE) — 190 registros</h4>
+          <p style="font-size:12px; color:var(--gray-text); margin-bottom:8px;">Staff IDs SPX* — tickets no sistema PSC</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="background:#fff3e0; border-radius:6px; padding:8px; text-align:center;">
+              <div style="font-size:18px; font-weight:700; color:#e65100;">80</div>
+              <div style="font-size:9px; color:var(--gray-text);">PENDENTES</div>
+            </div>
+            <div style="background:#e8f5e9; border-radius:6px; padding:8px; text-align:center;">
+              <div style="font-size:18px; font-weight:700; color:#2e7d32;">110</div>
+              <div style="font-size:9px; color:var(--gray-text);">CONCLUÍDOS</div>
+            </div>
+          </div>
+          <p style="font-size:11px; margin-top:8px; color:var(--gray-text);">
+            58% concluídos (PSC concluído). 80 pendentes necessitam acompanhamento.
+          </p>
+        </div>
+
+        <div style="border:1px solid #e0e0e0; border-radius:8px; padding:12px;">
+          <h4 style="font-size:13px; margin:0 0 8px; color:#e65100;">Jira (BPO) — 256 registros</h4>
+          <p style="font-size:12px; color:var(--gray-text); margin-bottom:8px;">Staff IDs BPO — tickets no sistema Jira</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="background:#fff3e0; border-radius:6px; padding:8px; text-align:center;">
+              <div style="font-size:18px; font-weight:700; color:#e65100;">197</div>
+              <div style="font-size:9px; color:var(--gray-text);">PENDENTES</div>
+            </div>
+            <div style="background:var(--gray-light); border-radius:6px; padding:8px; text-align:center;">
+              <div style="font-size:18px; font-weight:700; color:var(--dark);">59</div>
+              <div style="font-size:9px; color:var(--gray-text);">SEM STATUS</div>
+            </div>
+          </div>
+          <p style="font-size:11px; margin-top:8px; color:var(--gray-text);">
+            0 concluídos no Jira. 197 pendentes (77%) + 59 sem status (23%). Todos ativos na CC.
+          </p>
+        </div>
       </div>
 
-      <p style="font-size:13px;">
-        <b>100%</b> (446/446) das pessoas da PSC estão na CrossCheck e <b>TODAS estão ATIVAS</b>.
-        Composição: <b>256 BPO + 190 FTE</b>.
-      </p>
-      <p style="font-size:13px; margin-top:8px;">
-        Dos <b>277 pendentes</b>, todos estão in Performance — são casos recorrentes que necessitam
-        regularização nos tickets PSC para refletir nas bases.
-      </p>
+      <div class="insight-box" style="background:#fff8e1; border-left-color:#f39c12; margin-top:12px;">
+        <strong style="color:#c78c00;">Nota:</strong> PSC e Jira são <b>sistemas de tickets diferentes</b>.
+        PSC atende FTE (SPX*), Jira atende BPO. O PSC tem 58% de resolução (110 concluídos),
+        enquanto o Jira não tem nenhum concluído — todos os 256 estão pendentes ou sem status.
+      </div>
     </div>
   </div>
 </div>
