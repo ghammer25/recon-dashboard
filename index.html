@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recon HC — Report 24/03/2026</title>
+<title>Recon HC — Report 25/03/2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root {
@@ -97,30 +97,30 @@
 <div class="header">
   <h1>Reconciliacao de Bases de HC — SPX Express Brasil</h1>
   <div class="sub">Projeto DEASA | Scope: Performance Hubs (FMH + LMH) | Auxiliar de Logistica</div>
-  <div class="date">Atualizado: 24/03/2026 14:06 BRT</div>
+  <div class="date">Atualizado: 25/03/2026 19:03 BRT</div>
 </div>
 
 <!-- KPI BAR: FLMH -->
 <div class="kpi-section-label">FLMH (FMH + LMH)</div>
 <div class="kpi-bar">
-  <div class="kpi-card ok">
-    <div class="value">0.0%</div>
+  <div class="kpi-card warning">
+    <div class="value">9.9%</div>
     <div class="label">Taxa Discrepancia</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">18.996</div>
     <div class="label">Total HCs</div>
   </div>
   <div class="kpi-card critical">
-    <div class="value">0</div>
+    <div class="value">1.881</div>
     <div class="label">Erros</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">7.986</div>
     <div class="label">FTEs Ativos</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">11.010</div>
     <div class="label">BPOs Ativos</div>
   </div>
   <div class="kpi-card warning">
@@ -131,24 +131,24 @@
 <!-- KPI BAR: SOCs -->
 <div class="kpi-section-label">SOCs</div>
 <div class="kpi-bar">
-  <div class="kpi-card ok">
-    <div class="value">0.0%</div>
+  <div class="kpi-card warning">
+    <div class="value">12.4%</div>
     <div class="label">Taxa Discrepancia</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">19.128</div>
     <div class="label">Total HCs</div>
   </div>
   <div class="kpi-card critical">
-    <div class="value">0</div>
+    <div class="value">2.381</div>
     <div class="label">Erros</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">5.676</div>
     <div class="label">FTEs Ativos</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">13.452</div>
     <div class="label">BPOs Ativos</div>
   </div>
   <div class="kpi-card warning">
@@ -159,24 +159,24 @@
 <!-- KPI BAR: GERAL -->
 <div class="kpi-section-label">Geral (Todos os Site Types)</div>
 <div class="kpi-bar">
-  <div class="kpi-card ok">
-    <div class="value">0.0%</div>
+  <div class="kpi-card warning">
+    <div class="value">10.8%</div>
     <div class="label">Taxa Discrepancia</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">39.567</div>
     <div class="label">Total HCs</div>
   </div>
   <div class="kpi-card critical">
-    <div class="value">0</div>
+    <div class="value">4.273</div>
     <div class="label">Erros</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">14.147</div>
     <div class="label">FTEs Ativos</div>
   </div>
   <div class="kpi-card neutral">
-    <div class="value">0</div>
+    <div class="value">25.420</div>
     <div class="label">BPOs Ativos</div>
   </div>
   <div class="kpi-card warning">
@@ -193,14 +193,14 @@
   <span class="section-title">Evolucao semanal da reconciliacao</span>
 
   <div class="insight-box">
-    <strong>Situacao atual:</strong> Taxa de discrepancia em <b>0.0%</b> — 0 erros em 0 HCs
-    (FTE: 0, BPO: 0).<br>
-    <strong>FMH:</strong> 0 erros (0.0%) em 0 HCs |
-    <strong>LMH:</strong> 0 erros (0.0%) em 0 HCs |
-    <strong>SOCs:</strong> 0 erros (0.0%) em 0 HCs |
+    <strong>Situacao atual:</strong> Taxa de discrepancia em <b>9.9%</b> — 1.881 erros em 18.996 HCs
+    (FTE: 7.986, BPO: 11.010).<br>
+    <strong>FMH:</strong> 470 erros (11.4%) em 4.126 HCs |
+    <strong>LMH:</strong> 1.411 erros (9.5%) em 14.870 HCs |
+    <strong>SOCs:</strong> 2.381 erros (12.4%) em 19.128 HCs |
     <strong>Own Flex:</strong> 0 erros em 0 HCs |
-    <strong>CB:</strong> 0 erros em 0 HCs |
-    <strong>RTS:</strong> 0 erros em 0 HCs |
+    <strong>CB:</strong> 11 erros em 965 HCs |
+    <strong>RTS:</strong> 0 erros em 478 HCs |
     <strong>Almox:</strong> 0 erros em 0 HCs
   </div>
 
@@ -536,6 +536,621 @@
 <div class="section">
   <span class="section-num">3</span>
   <span class="section-title">Detalhamento por operacao</span>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">a) LMH
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 14.870 HCs | Erros: 1.411 (9.5%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HR</th>
+        <th class="group-header" colspan="2">Attend.</th>
+        <th class="group-header" colspan="2">Perf.</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>147</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>89</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>1.835</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>7.592</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>1.322</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge critical">Total: 236</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>147</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>89</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 10.749</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>1.835</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>7.592</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>1.322</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">b) FMH
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 4.126 HCs | Erros: 470 (11.4%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HR</th>
+        <th class="group-header" colspan="2">Attend.</th>
+        <th class="group-header" colspan="2">Perf.</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>112</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>2</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>610</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>1.631</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>468</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge warning">Total: 114</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>112</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>2</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 2.709</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>610</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>1.631</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>468</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">c) SOCs
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 19.128 HCs | Erros: 2.381 (12.4%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HR</th>
+        <th class="group-header" colspan="2">Attend.</th>
+        <th class="group-header" colspan="2">Perf.</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>1</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>263</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>5.368</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>6.719</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>2.118</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge critical">Total: 264</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>1</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>263</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 14.205</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>5.368</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>6.719</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>2.118</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">e) CB
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 965 HCs | Erros: 11 (1.1%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HR</th>
+        <th class="group-header" colspan="2">Attend.</th>
+        <th class="group-header" colspan="2">Perf.</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>18</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>9</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>37</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>214</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>2</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge ok">Total: 27</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>18</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>9</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 253</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>37</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>214</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>2</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--spx-blue);">f) RTS
+    <span style="font-size:12px; font-weight:400; color:var(--gray-text); margin-left:12px;">
+      Total: 478 HCs | Erros: 0 (0.0%)
+    </span>
+  </h3>
+  <table>
+    <thead>
+      <tr>
+        <th class="group-header" style="text-align:left;"></th>
+        <th class="group-header" colspan="2">HR</th>
+        <th class="group-header" colspan="2">Attend.</th>
+        <th class="group-header" colspan="2">Perf.</th>
+      </tr>
+      <tr>
+        <th style="text-align:left;">Status</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+        <th># Atual</th><th>Obs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location divergente</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Nao contem nas bases</td>
+        <td>3</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>273</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+      <tr>
+        <td>Inativos</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+        <td>0</td>
+        <td style="font-size:11px; color:var(--gray-text); font-style:italic;">(preencher)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Location divergente</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Nao contem nas bases</span>
+      <span class="badge critical">Total: 276</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>3</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>273</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
+
+  <div class="detail-card">
+    <div class="card-header">
+      <span>Inativos</span>
+      <span class="badge ok">Total: 0</span>
+    </div>
+    <div class="card-body">
+      <div class="base-row">
+        <span class="base-name">HR</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Attend.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+      <div class="base-row">
+        <span class="base-name">Perf.</span>
+        <span class="base-val"><b>0</b> divergencias</span>
+      </div>
+      <div class="action-line">XX ajustadas | XX para corrigir | XX pendentes — Causa raiz: (preencher) — Acao: PIC / ETA</div>
+    </div>
+  </div>
 </div>
 
 <!-- SECTION 4: ANALISE PARETO PER SITE TYPE -->
@@ -544,164 +1159,164 @@
   <span class="section-title">Analise de Pareto (80/20)</span>
 
   <div class="pareto-tabs">
-    <div class="pareto-tab active" onclick="showPareto('total')">Total <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
-    <div class="pareto-tab" onclick="showPareto('fmh')">FMH <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
-    <div class="pareto-tab" onclick="showPareto('lmh')">LMH <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
-    <div class="pareto-tab" onclick="showPareto('flmh')">FLMH <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
-    <div class="pareto-tab" onclick="showPareto('socs')">SOCs <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
+    <div class="pareto-tab active" onclick="showPareto('total')">Total <span style="font-size:10px;color:var(--gray-text);">(4.273)</span></div>
+    <div class="pareto-tab" onclick="showPareto('fmh')">FMH <span style="font-size:10px;color:var(--gray-text);">(470)</span></div>
+    <div class="pareto-tab" onclick="showPareto('lmh')">LMH <span style="font-size:10px;color:var(--gray-text);">(1.411)</span></div>
+    <div class="pareto-tab" onclick="showPareto('flmh')">FLMH <span style="font-size:10px;color:var(--gray-text);">(1.881)</span></div>
+    <div class="pareto-tab" onclick="showPareto('socs')">SOCs <span style="font-size:10px;color:var(--gray-text);">(2.381)</span></div>
     <div class="pareto-tab" onclick="showPareto('ownflex')">Own Flex <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
-    <div class="pareto-tab" onclick="showPareto('cb')">CB <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
+    <div class="pareto-tab" onclick="showPareto('cb')">CB <span style="font-size:10px;color:var(--gray-text);">(11)</span></div>
     <div class="pareto-tab" onclick="showPareto('rts')">RTS <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
     <div class="pareto-tab" onclick="showPareto('almox')">Almox <span style="font-size:10px;color:var(--gray-text);">(0)</span></div>
   </div>
   <div class="pareto-panel active" id="pareto-total">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:91; background:#e84d3c;" title="Nao contem na DB: 3.910 (91.5%)">92%</div>
+      <div class="pareto-segment" style="flex-grow:8; background:#f39c12;" title="Sort Code Incorreto: 363 (8.5%)">8%</div>
+      <div class="pareto-segment" style="flex-grow:3; background:#3498db;" title="Sem Staff ID: 169 (4.0%)">4%</div>
+      <div class="pareto-segment" style="flex-grow:2; background:#9b59b6;" title="Wrong Staff ID: 95 (2.2%)">2%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 3.910</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Sort Code Incorreto: 363</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sem Staff ID: 169</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 95</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
     </div>
     <table>
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Nao contem na DB</td><td>3.910</td><td>91.5%</td><td>91.5%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>363</td><td>8.5%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>169</td><td>4.0%</td><td>104.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>95</td><td>2.2%</td><td>106.2%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>106.2%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>106.2%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>4.273</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-fmh">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:99; background:#e84d3c;" title="Nao contem na DB: 468 (99.6%)">100%</div>
+      <div class="pareto-segment" style="flex-grow:6; background:#f39c12;" title="Wrong Staff ID: 30 (6.4%)">6%</div>
+      <div class="pareto-segment" style="flex-grow:2; background:#3498db;" title="Sem Staff ID: 11 (2.3%)">2%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Sort Code Incorreto: 2 (0.4%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 468</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Wrong Staff ID: 30</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sem Staff ID: 11</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Sort Code Incorreto: 2</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
     </div>
     <table>
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Nao contem na DB</td><td>468</td><td>99.6%</td><td>99.6%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>30</td><td>6.4%</td><td>106.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>11</td><td>2.3%</td><td>108.3%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>2</td><td>0.4%</td><td>108.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>108.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>108.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>470</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-lmh">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:93; background:#e84d3c;" title="Nao contem na DB: 1.322 (93.7%)">94%</div>
+      <div class="pareto-segment" style="flex-grow:6; background:#f39c12;" title="Sort Code Incorreto: 89 (6.3%)">6%</div>
+      <div class="pareto-segment" style="flex-grow:2; background:#3498db;" title="Wrong Staff ID: 29 (2.1%)">2%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Sem Staff ID: 11 (0.8%)">1%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 1.322</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Sort Code Incorreto: 89</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Wrong Staff ID: 29</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Sem Staff ID: 11</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
     </div>
     <table>
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Nao contem na DB</td><td>1.322</td><td>93.7%</td><td>93.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>89</td><td>6.3%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>29</td><td>2.1%</td><td>102.1%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>11</td><td>0.8%</td><td>102.8%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>102.8%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>102.8%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>1.411</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-flmh">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:95; background:#e84d3c;" title="Nao contem na DB: 1.790 (95.2%)">95%</div>
+      <div class="pareto-segment" style="flex-grow:4; background:#f39c12;" title="Sort Code Incorreto: 91 (4.8%)">5%</div>
+      <div class="pareto-segment" style="flex-grow:3; background:#3498db;" title="Wrong Staff ID: 59 (3.1%)">3%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Sem Staff ID: 22 (1.2%)">1%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 1.790</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Sort Code Incorreto: 91</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Wrong Staff ID: 59</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Sem Staff ID: 22</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
     </div>
     <table>
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Nao contem na DB</td><td>1.790</td><td>95.2%</td><td>95.2%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>91</td><td>4.8%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>59</td><td>3.1%</td><td>103.1%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>22</td><td>1.2%</td><td>104.3%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>104.3%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>104.3%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>1.881</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-socs">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:88; background:#e84d3c;" title="Nao contem na DB: 2.118 (89.0%)">89%</div>
+      <div class="pareto-segment" style="flex-grow:11; background:#f39c12;" title="Sort Code Incorreto: 263 (11.0%)">11%</div>
+      <div class="pareto-segment" style="flex-grow:6; background:#3498db;" title="Sem Staff ID: 147 (6.2%)">6%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 36 (1.5%)">2%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 2.118</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Sort Code Incorreto: 263</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sem Staff ID: 147</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 36</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
     </div>
     <table>
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Nao contem na DB</td><td>2.118</td><td>89.0%</td><td>89.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>263</td><td>11.0%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>147</td><td>6.2%</td><td>106.2%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>36</td><td>1.5%</td><td>107.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>107.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>107.7%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>2.381</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-ownflex">
@@ -736,17 +1351,17 @@
   </div>
   <div class="pareto-panel" id="pareto-cb">
     <div class="pareto-bar">
-      <div class="pareto-segment" style="flex-grow:1; background:#e84d3c;" title="Nao contem na DB: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#f39c12;" title="Inativos: 0 (0.0%)">0%</div>
-      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Sort Code Incorreto: 0 (0.0%)">0%</div>
+      <div class="pareto-segment" style="flex-grow:81; background:#e84d3c;" title="Sort Code Incorreto: 9 (81.8%)">82%</div>
+      <div class="pareto-segment" style="flex-grow:18; background:#f39c12;" title="Nao contem na DB: 2 (18.2%)">18%</div>
+      <div class="pareto-segment" style="flex-grow:1; background:#3498db;" title="Inativos: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#9b59b6;" title="Wrong Staff ID: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#1abc9c;" title="Sem Staff ID: 0 (0.0%)">0%</div>
       <div class="pareto-segment" style="flex-grow:1; background:#95a5a6;" title="Internalizacao: 0 (0.0%)">0%</div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Nao contem na DB: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Inativos: 0</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Sort Code Incorreto: 0</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#e84d3c;"></span> Sort Code Incorreto: 9</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f39c12;"></span> Nao contem na DB: 2</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#3498db;"></span> Inativos: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#9b59b6;"></span> Wrong Staff ID: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#1abc9c;"></span> Sem Staff ID: 0</span>
       <span class="legend-item"><span class="legend-dot" style="background:#95a5a6;"></span> Internalizacao: 0</span>
@@ -755,13 +1370,13 @@
       <thead><tr>
         <th style="text-align:left;">Tipo de Erro</th><th>Qtd</th><th>%</th><th>% Acum.</th><th>80%?</th>
       </tr></thead><tbody>
-      <tr><td>Nao contem na DB</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sort Code Incorreto</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>0.0%</td><td><span class="badge critical">SIM</span></td></tr>
-      <tr class="total-row"><td>TOTAL</td><td>0</td><td>100%</td><td></td><td></td></tr>
+      <tr><td>Sort Code Incorreto</td><td>9</td><td>81.8%</td><td>81.8%</td><td><span class="badge critical">SIM</span></td></tr>
+      <tr><td>Nao contem na DB</td><td>2</td><td>18.2%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Inativos</td><td>0</td><td>0.0%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Wrong Staff ID</td><td>0</td><td>0.0%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Sem Staff ID</td><td>0</td><td>0.0%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr><td>Internalizacao</td><td>0</td><td>0.0%</td><td>100.0%</td><td><span class="badge ok">NAO</span></td></tr>
+      <tr class="total-row"><td>TOTAL</td><td>11</td><td>100%</td><td></td><td></td></tr>
     </tbody></table>
   </div>
   <div class="pareto-panel" id="pareto-rts">
@@ -848,50 +1463,50 @@
     <tbody>
       <tr>
         <td><b>FMH</b></td>
+        <td>3.979</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>4.126</td>
+        <td>4.126</td>
+        <td>1.360</td>
+        <td>2.766</td>
+        <td>470</td>
+        <td><span class="badge warning">11.4%</span></td>
         <td>0</td>
       </tr>
       <tr>
         <td><b>LMH</b></td>
+        <td>14.330</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>14.870</td>
+        <td>14.870</td>
+        <td>6.626</td>
+        <td>8.244</td>
+        <td>1.411</td>
+        <td><span class="badge warning">9.5%</span></td>
         <td>0</td>
       </tr>
       <tr class="total-row">
         <td><b>FLMH</b></td>
+        <td>18.451</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>18.996</td>
+        <td>18.996</td>
+        <td>7.986</td>
+        <td>11.010</td>
+        <td>1.881</td>
+        <td><span class="badge warning">9.9%</span></td>
         <td>0</td>
       </tr>
       <tr>
         <td><b>SOCs</b></td>
+        <td>15.755</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>19.128</td>
+        <td>19.128</td>
+        <td>5.676</td>
+        <td>13.452</td>
+        <td>2.381</td>
+        <td><span class="badge warning">12.4%</span></td>
         <td>0</td>
       </tr>
       <tr>
@@ -908,24 +1523,24 @@
       </tr>
       <tr>
         <td><b>CB</b></td>
+        <td>103</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>965</td>
+        <td>965</td>
+        <td>212</td>
+        <td>753</td>
+        <td>11</td>
+        <td><span class="badge ok">1.1%</span></td>
         <td>0</td>
       </tr>
       <tr>
         <td><b>RTS</b></td>
+        <td>475</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
+        <td>478</td>
+        <td>478</td>
+        <td>273</td>
+        <td>205</td>
         <td>0</td>
         <td><span class="badge ok">0.0%</span></td>
         <td>0</td>
@@ -944,14 +1559,14 @@
       </tr>
       <tr class="total-row">
         <td>TOTAL GERAL</td>
+        <td>34.642</td>
         <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td><span class="badge ok">0.0%</span></td>
+        <td>39.567</td>
+        <td>39.567</td>
+        <td>14.147</td>
+        <td>25.420</td>
+        <td>4.273</td>
+        <td><span class="badge warning">10.8%</span></td>
         <td>0</td>
       </tr>
     </tbody>
@@ -979,7 +1594,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-  Gerado automaticamente por build_local_dashboard.py | Dados: Ind. Summary v2 + Evolução | 24/03/2026
+  Gerado automaticamente por build_local_dashboard.py | Dados: Ind. Summary v2 + Evolução | 25/03/2026
 </div>
 
 </div><!-- /container -->
